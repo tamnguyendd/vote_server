@@ -1,0 +1,44 @@
+https://fly.io/docs/reference/postgres/
+
+============================================================
+Creating postgres cluster votett-db in organization personal
+Postgres cluster votett-db created
+  Username:    postgres
+  Password:    efce02e6e893ad9c6e0896fa8074b6d866595cc28f7b320c
+  Hostname:    votett-db.internal
+  Proxy Port:  5432
+  PG Port: 5433
+←[3mSave your credentials in a secure place -- you won't be able to see them again!←[0m
+
+Monitoring Deployment
+
+1 desired, 1 placed, 1 healthy, 0 unhealthy [health checks: 3 total, 3 passing]
+--> v0 deployed successfully
+
+←[1mConnect to postgres←[0m
+Any app within the personal organization can connect to postgres using the above credentials and the hostname "votett-db.internal."
+For example: postgres://postgres:efce02e6e893ad9c6e0896fa8074b6d866595cc28f7b320c@votett-db.internal:5432
+
+Now that you've set up postgres, here's what you need to understand: https://fly.io/docs/reference/postgres-whats-next/
+
+============================================================
+flyctl proxy 5432 -a votett-db
+
+127.0.0.1:5432
+
+or: flyctl proxy 15432:5432 -a votett-db
+    127.0.0.1:15432
+
+============================================================
+flyctl postgres connect -a votett-db
+
+<SQL Shell>
+psql postgres://postgres:efce02e6e893ad9c6e0896fa8074b6d866595cc28f7b320c@localhost:5432
+>votett-db
+>5432
+>\l
+>\c votett
+
+============================================================
+DATABASE_URL=postgres://postgres:efce02e6e893ad9c6e0896fa8074b6d866595cc28f7b320c@votett-db.internal:5432/votett
+
