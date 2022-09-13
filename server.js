@@ -30,7 +30,9 @@ app.get("/", async (req, res) => {
 //
 app.use('/item', itemRouter);
 
-app.listen(5000, (err) => {
+const PORT = process.env.PORT ||5000;
+
+app.listen(PORT, (err) => {
     console.log("Listening");
 });
 
