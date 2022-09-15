@@ -30,9 +30,20 @@ app.get("/", async (req, res) => {
 //
 app.use('/item', itemRouter);
 
+//////////////////tet web 3
+const metamask = require('./metamask/metamask');
+app.get("/mm", async (req, res) => {
+
+    const votelog = await metamask.vote_item(2);
+    res.send("test smart contract: " + (JSON.stringify(votelog)));
+});
+
+
+
+
 const PORT = process.env.PORT ||5000;
 
 app.listen(PORT, (err) => {
-    console.log("Listening");
+    console.log("Listening at: " + PORT);
 });
 
